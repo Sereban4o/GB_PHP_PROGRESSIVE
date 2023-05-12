@@ -58,8 +58,14 @@ class SqlitePostsRepository implements PostsRepositoryInterface
         );
     }
 
-    public function getPosts(User $user): void
+    public function delete(UUID $uuid): void
     {
-        //Сделать выбор всех постов автора
+        $statement = $this->connection->prepare(
+            'DELETE FROM posts WHERE uuid = :uuid;'
+        );
+
+        $statement->execute([
+            ':uuid' => $uuid,
+        ]);
     }
 }
