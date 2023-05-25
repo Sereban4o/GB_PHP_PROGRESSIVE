@@ -121,4 +121,18 @@ class CreateUserCommandTest extends TestCase
         // а не утверждение относительно команды
         $this->assertTrue($usersRepository->wasCalled());
     }
+
+    public function testItRequiresPassword(): void
+    {
+        $command = new CreateUserCommand(
+            $this->makeUsersRepository(),
+            new DummyLogger()
+        );
+        $this->expectException(ArgumentsException::class);
+        $this->expectExceptionMessage('No such argument: password');
+        $command->handle(new Arguments([
+            'username' => 'Ivan',
+        ]));
+    }
+
 }

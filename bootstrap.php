@@ -1,8 +1,14 @@
 <?php
 
 use Dotenv\Dotenv;
-use GeekBrains\Http\Auth\IdentificationInterface;
-use GeekBrains\Http\Auth\JsonBodyUuidIdentification;
+use GeekBrains\Http\Auth\AuthenticationInterface;
+use GeekBrains\Http\Auth\BearerTokenAuthentication;
+use GeekBrains\Http\Auth\JsonBodyUuidAuthentication;
+use GeekBrains\Http\Auth\PasswordAuthentication;
+use GeekBrains\Http\Auth\PasswordAuthenticationInterface;
+use GeekBrains\Http\Auth\TokenAuthenticationInterface;
+use GeekBrains\Repositories\AuthTokensRepository\AuthTokensRepositoryInterface;
+use GeekBrains\Repositories\AuthTokensRepository\SqliteAuthTokensRepository;
 use GeekBrains\Repositories\Likes\LikesCommentsRepositoryInterface;
 use GeekBrains\Repositories\Likes\LikesPostsRepositoryInterface;
 use GeekBrains\Repositories\Likes\SqliteLikesCommentsRepository;
@@ -51,8 +57,8 @@ $container->bind(
 );
 
 $container->bind(
-    IdentificationInterface::class,
-    JsonBodyUuidIdentification::class
+    AuthenticationInterface::class,
+    JsonBodyUuidAuthentication::class
 );
 
 
@@ -85,6 +91,26 @@ $container->bind(
     LoggerInterface::class,
     $logger
 );
+
+$container->bind(
+    AuthenticationInterface::class,
+    PasswordAuthentication::class
+);
+
+$container->bind(
+    PasswordAuthenticationInterface::class,
+    PasswordAuthentication::class
+);
+$container->bind(
+    AuthTokensRepositoryInterface::class,
+    SqliteAuthTokensRepository::class
+);
+
+$container->bind(
+    TokenAuthenticationInterface::class,
+    BearerTokenAuthentication::class
+);
+
 
 
 return $container;

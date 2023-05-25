@@ -3,7 +3,9 @@
 use GeekBrains\Blog\Exceptions\AppException;
 use GeekBrains\Commands\AddLikeComment;
 use GeekBrains\Commands\AddLikePost;
+use GeekBrains\Http\Auth\LogIn;
 use GeekBrains\Http\Actions\Users\FindByUsername;
+use GeekBrains\Http\Auth\LogOut;
 use GeekBrains\Http\ErrorResponse;
 use GeekBrains\Http\HttpException;
 use GeekBrains\Http\Request;
@@ -47,6 +49,8 @@ $routes = [
 
     ],
     'POST' => [
+        '/login' => LogIn::class,
+        '/logout' => LogOut::class,
         '/posts/create' => CreatePost::class,
         '/posts/comment' => CreateComment::class,
         '/posts/likes/add' => AddLikePost::class,

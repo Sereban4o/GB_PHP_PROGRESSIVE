@@ -9,7 +9,7 @@ use GeekBrains\Person\User;
 use GeekBrains\Person\UUID;
 use GeekBrains\Repositories\Users\UsersRepositoryInterface;
 
-class JsonBodyUuidIdentification implements IdentificationInterface
+class JsonBodyUuidAuthentication implements AuthenticationInterface
 {
     public function __construct(
         private UsersRepositoryInterface $usersRepository
