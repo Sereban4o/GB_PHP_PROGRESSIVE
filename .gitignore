@@ -4,3 +4,12 @@ composer.phar
 # Commit your application's lock file https://getcomposer.org/doc/01-basic-usage.md#commit-your-composer-lock-file-to-version-control
 # You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
 # composer.lock
+.idea/httpRequests/2023-05-16T174117.200.html
+.idea/httpRequests/2023-05-16T174226.200.html
+.idea/httpRequests/2023-05-16T174242.200.html
+.idea/httpRequests/2023-05-16T175130.200.html
+.idea/httpRequests/2023-05-16T175139.200.html
+.idea/httpRequests/2023-05-16T175514.200.html
+.idea/httpRequests/http-client.cookies
+.idea/httpRequests/http-requests-log.http
+.idea/workspace.xml
